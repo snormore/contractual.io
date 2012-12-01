@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load bootstrap_toolkit %}
+{% load i18n %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Contractual.io</title>
+    <meta name="description" content="">
+    <meta name="author" content="Contractual.io / Steven Normore">
+    {% bootstrap_stylesheet_tag %}
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+        footer {clear:both;border-top:solid 1px #ddd;}
+        footer .nav {border:0;}
+        footer .nav li a {background:transparent !important;border:0 !important;padding-left:0;}
+    </style>
+    {% block css %}{% endblock %}
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    {% bootstrap_javascript_tag "dropdown" %}
+    {% block js %}{% endblock %}
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="{% url home %}">Contractual.io</a>
+            <ul class="nav">
+                <li><a href="#">{% trans 'Create a contract' %}</a></li>
+                <li><a href="#">{% trans 'Contracts' %}</a></li>
+            </ul>
+            <ul class="nav pull-right">
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url logout %}?next={% url home %}">{% trans 'Logout' %}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    {% block content %}{% endblock %}
+
+    <footer class="row">
+        <div class="span6">
+            <ul class="nav nav-tabs">
+                <li><a href="{% url contact %}">{% trans 'About' %}</a></li>
+                <li><a href="{% url contact %}">{% trans 'API' %}</a></li>
+                <li><a href="{% url contact %}">{% trans 'Legal' %}</a></li>
+                <li><a href="{% url contact %}">{% trans 'Contact' %}</a></li>
+            </ul>
+        </div>
+        <div class="span6" style="text-align:right;padding-top:8px;">
+            &copy; <a href="http://contractual.io/">Contractual.io</a> {% now 'Y' %}</li>
+        </div>
+    </footer>
+
+</div> <!-- container -->
+
+</body>
+</html>

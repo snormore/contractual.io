@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap_toolkit %}
+{% load i18n %}
+
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+    {{ form|as_bootstrap}}
+    <div class="control-group">
+        <div class="control">
+            <button type="submit">{% trans 'Login' %}</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

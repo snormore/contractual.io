@@ -6,9 +6,11 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'contractrualio.views.home', name='home'),
-    # url(r'^contractrualio/', include('contractrualio.foo.urls')),
+    url(r'^$', 'core.views.home', name='home'),
+    url(r'^contact/$', 'core.views.contact', name='contact'),
+    # url(r'^contracts/$', 'contract.views.contracts', name='contracts'),
 
+    url('^accounts/', include('django.contrib.auth.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
